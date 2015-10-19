@@ -1,0 +1,9 @@
+---
+- hosts: development
+  remote_user: vagrant
+  tasks:
+    - include: tasks/locale.yml
+    - include: tasks/apt.yml
+    - include: tasks/zsh.yml
+    - include: tasks/ruby.yml
+    - include: tasks/java.yml

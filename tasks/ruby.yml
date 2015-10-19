@@ -1,0 +1,32 @@
+---
+- name: Update apt
+  apt: update_cache=yes
+  sudo: True
+
+- name: Install required packages
+  apt: name={{item}} state=latest
+  sudo: True
+  with_items:
+    - zlib1g-dev
+    - libssl-dev
+    - libreadline-dev
+    - libyaml-dev
+    - libxml2-dev
+    - libxslt1-dev
+    - libffi-dev
+
+- name: Checkout rbenv
+  git: repo=git@github.com:sstephenson/rbenv.git dest=~/.rbenv
+
+- name: Add rbenv path export
+  shell: echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.zshrc_profile
+
+- name: Add rbenv init
+  shell: echo 'eval "$(rbenv init -)"' >> ~/.zshrc_profile
+
+- name: Checkout ruby-build
+  git: repo=git@github.com:sstephenson/ruby-build.git dest=~/.rbenv/plugins/ruby-build
+
+- name: Add ruby-build path export
+  shell: echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.zshrc_profile
+

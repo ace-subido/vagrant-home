@@ -1,0 +1,44 @@
+---
+- name: Update apt
+  apt: update_cache=yes
+  sudo: True
+
+- name: Install required packages
+  apt: name={{item}} state=latest
+  sudo: True
+  with_items:
+    - git-core
+    - build-essential
+    - curl
+    - zip
+    - unzip
+    - libcurl4-openssl-dev
+    - libv8-dev
+    - vim
+    - tree
+    - tmux
+    - python-software-properties
+
+- name: Add openjdk ppa
+  apt_repository: repo='ppa:openjdk-r/ppa'
+  sudo: True
+
+- name: Update apt for openjdk-8
+  apt: update_cache=yes
+  sudo: True
+
+
+git-core
+curl
+zlib1g-dev
+build-essential
+libssl-dev
+libreadline-dev
+libyaml-dev
+libsqlite3-dev
+sqlite3
+libxml2-dev
+libxslt1-dev
+libcurl4-openssl-dev
+python-software-properties
+libffi-dev

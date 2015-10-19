@@ -1,0 +1,6 @@
+# box_url: ""
+box_name: "ubuntu/trusty64"
+ip: "192.168.33.10"
+cpus: 1
+memory: 1536
+host_name: "vagrant-home"
