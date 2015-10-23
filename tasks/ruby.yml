@@ -11,7 +11,6 @@
 - name: Install ruby
   shell: ~/.rvm/bin/rvm install --default {{ ruby }} creates=~/.rvm/rubies/{{ ruby }}
 
-- name: Update bundler
-  shell: ~/.rvm/rubies/{{ ruby }}/bin/gem update bundler -v 1.8
-
+- name: Install bundler
+  shell: ~/.rvm/rubies/{{ ruby }}/bin/gem install bundler
 

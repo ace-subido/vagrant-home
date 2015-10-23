@@ -1,4 +1,12 @@
 ---
+- name: Add openjdk ppa
+  apt_repository: repo='ppa:openjdk-r/ppa'
+  sudo: True
+
+- name: Add GDAL apt repository
+  apt_repository: repo='ppa:ubuntugis/ubuntugis-unstable'
+  sudo: True
+
 - name: Update apt
   apt: update_cache=yes
   sudo: True
@@ -18,12 +26,4 @@
     - tree
     - tmux
     - python-software-properties
-
-- name: Add openjdk ppa
-  apt_repository: repo='ppa:openjdk-r/ppa'
-  sudo: True
-
-- name: Update apt for openjdk-8
-  apt: update_cache=yes
-  sudo: True
 
