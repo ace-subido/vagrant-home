@@ -1,3 +1,4 @@
 username: "vagrant"
 home_dir: "/home/{{ username }}"
+ruby: 2.2.2
 
