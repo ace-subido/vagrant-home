@@ -3,6 +3,5 @@
   apt: name={{item}} state=latest
   sudo: True
   with_items:
-    - openjdk-7-jre
     - openjdk-8-jre
 
