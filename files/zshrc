@@ -29,3 +29,4 @@ if [[ -s "${HOME}/.zsh.after/*.zsh" ]]; then
   for config_file ($HOME/.zsh.after/*.zsh) source $config_file
 fi
 
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
