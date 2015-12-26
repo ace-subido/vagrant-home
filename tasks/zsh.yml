@@ -20,7 +20,7 @@
 # Now, we want to set zsh as the default shell, unless it is already the default
 # one.
 - name: make zsh default
-  user: name={{username}} shell=/bin/zsh
+  user: name={{app_user}} shell=/bin/zsh
   sudo: True
   # shell:  chsh -s /bin/zsh
   # This task will run only when the following is true. In here, we check the

@@ -17,9 +17,11 @@
   with_items:
     - git-core
     - build-essential
+    - ruby-dev
     - curl
     - zip
     - unzip
+    - libgmp3-dev
     - libcurl4-openssl-dev
     - libv8-dev
     - vim

@@ -12,5 +12,6 @@
   shell: ~/.rvm/bin/rvm install --default {{ ruby }} creates=~/.rvm/rubies/{{ ruby }}
 
 - name: Install bundler
-  shell: ~/.rvm/rubies/{{ ruby }}/bin/gem install bundler
+  shell: gem install bundler
+  sudo: True
 
