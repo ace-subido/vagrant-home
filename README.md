@@ -6,7 +6,7 @@ This creates a local VM where you can put in your projects. It installs the foll
 
 - zsh, with tmux and fasd_cd
 - open-jdk
-- rbenv
+- rvm
 - and you can easily add other stuff you can think of...
 
 ### Usage
