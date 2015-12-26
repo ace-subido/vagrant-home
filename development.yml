@@ -1,9 +1,14 @@
 ---
 - hosts: development
   remote_user: vagrant
+  vars:
+    - app_user: vagrant
+    - app_environment: development
   tasks:
     - include: tasks/locale.yml
     - include: tasks/apt.yml
+    - include: tasks/imagemagick.yml
+    - include: tasks/sqlite.yml
+    - include: tasks/postgres.yml
     - include: tasks/zsh.yml
     - include: tasks/ruby.yml
-    - include: tasks/java.yml

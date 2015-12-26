@@ -1,0 +1,7 @@
+---
+- name: Install required packages
+  apt: name={{item}} state=latest
+  sudo: True
+  with_items:
+    - imagemagick
+
