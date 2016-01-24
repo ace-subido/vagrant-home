@@ -1,7 +1,4 @@
 ---
 - name: "Installing JDKs"
-  apt: name={{item}} state=latest
+  apt: name=openjdk-8-jre state=latest
   sudo: True
-  with_items:
-    - openjdk-8-jre
-
