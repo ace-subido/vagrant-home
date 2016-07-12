@@ -1,4 +1,0 @@
----
-- name: "Installing JDKs"
-  apt: name=openjdk-8-jre state=latest
-  sudo: True

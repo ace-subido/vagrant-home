@@ -1,0 +1,19 @@
+---
+- name: Check if rbenv is already installed
+  stat:
+    path: "{{ box_user_home_dir }}/.rbenv"
+  register: check_rbenv_installation
+
+- name: Check if rbenv is already installed
+  stat:
+    path: "{{ box_user_home_dir }}/.rbenv/plugins/ruby-build"
+  register: check_ruby_build_installation
+
+- name: Download rbenv
+  command: git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+  when: check_rbenv_installation.stat.exists == False
+
+- name: Download ruby-build
+  command: git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+  when: check_ruby_build_installation.stat.exists == False
+

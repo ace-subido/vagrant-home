@@ -16,5 +16,3 @@
   roles:
     - { role: ubuntu, ubuntu_mode: install_zsh, tags: [ubuntu_install_zsh] }
     - { role: ruby, tags: [ruby_install] }
-    - { role: sdkman, sdkman_mode: install, tags: [sdkman_install] }
-    - { role: python, python_mode: install_pyenv, tags: [python_install_pyenv] }

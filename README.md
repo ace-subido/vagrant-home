@@ -15,8 +15,7 @@ This creates a local VM where you can put in your projects. It installs the foll
 2. Make sure that Vagrant and Ansible is installed in your computer
 3. Add an ubuntu/trusty32 via `vagrant box add ubuntu/trusty32` (if you have a 64-bit machine, do `vagrant box add ubuntu/trusty64`)
 4. Run `vagrant up`
-5. From your local machine, get your ssh key (`~/.ssh/id_rsa.pub`) and add it inside the `~/.ssh/authorized_keys` entries in the VM.
-6. Run `ansible-playbook development.yml -i hosts -vvvv`
+5. Go inside the `ansible` folder and then run `ansible-playbook -i hosts setup_dev_box.yml -u vagrant -k -vvvv`
 
 ### Development Workflow
 
