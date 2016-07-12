@@ -1,2 +1,6 @@
 mnt/
 .vagrant/
+.DS_Store
+
+*.log
+*.retry
