@@ -1,3 +1,7 @@
+# 1.2.0
+
+- Moved into a role based structure for the ansible playbook
+
 # 1.1.0
 
 - Remove temporary copied list on apt.yml
