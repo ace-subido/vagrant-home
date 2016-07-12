@@ -1,0 +1,20 @@
+---
+- hosts: dev_box
+  become: true
+  roles:
+    - { role: ubuntu, ubuntu_mode: install_basic_tools, tags: [ubuntu_install_basic_tools] }
+    - { role: ubuntu, ubuntu_mode: set_locale, tags: [ubuntu_set_locale] }
+    - { role: ubuntu, ubuntu_mode: set_sudoers, tags: [ubuntu_set_sudoers] }
+    - { role: sqlite, tags: [sqlite_install] }
+    - { role: java, tags: [java_install] }
+    - { role: imagemagick, tags: [imagemagick_install] }
+    - { role: postgres, tags: [postgres_install] }
+    - { role: redis, tags: [redis_install] }
+    - { role: graphviz, tags: [graphviz_install] }
+
+- hosts: dev_box
+  roles:
+    - { role: ubuntu, ubuntu_mode: install_zsh, tags: [ubuntu_install_zsh] }
+    - { role: ruby, tags: [ruby_install] }
+    - { role: sdkman, sdkman_mode: install, tags: [sdkman_install] }
+    - { role: python, python_mode: install_pyenv, tags: [python_install_pyenv] }

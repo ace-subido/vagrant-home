@@ -1,0 +1,6 @@
+---
+- name: Install graphviz
+  apt:
+    name: graphviz
+    state: latest
+  

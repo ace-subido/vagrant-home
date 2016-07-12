@@ -1,0 +1,9 @@
+---
+- name: Check if sdkman is already installed
+  stat:
+    path: "{{ box_user_home_dir }}/.sdkman"
+  register: check_sdkman_installation
+
+- name: Install SDKman
+  shell: curl -s get.sdkman.io | bash
+  when: check_sdkman_installation.stat.exists == False

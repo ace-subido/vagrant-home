@@ -20,13 +20,21 @@ eval "$(fasd --init auto)"
 # For Xvfb and Jasmine
 export DISPLAY=:0
 
-# For java
-export JAVA_HOME=/usr/lib/jvm/java-8-openjdk-i386/jre
-
+# Customize to your needs...
 # Execute the config files in .zsh.after
 
 if [[ -s "${HOME}/.zsh.after/*.zsh" ]]; then
   for config_file ($HOME/.zsh.after/*.zsh) source $config_file
 fi
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+# For pyenv
+export PATH="${ZDOTDIR:-$HOME}/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# For Java
+export JAVA_HOME="/usr/lib/jvm/java-7-openjdk-amd64/"
+
+# For sdkman
+export SDKMAN_DIR="${ZDOTDIR:-$HOME}/"
+[[ -s "${ZDOTDIR:-$HOME}/.sdkman/bin/sdkman-init.sh" ]] && source "${ZDOTDIR:-$HOME}/.sdkman/bin/sdkman-init.sh"

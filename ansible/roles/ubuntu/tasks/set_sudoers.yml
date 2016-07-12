@@ -1,0 +1,8 @@
+---
+- name: Set Sudoers file
+  lineinfile:
+    dest: /etc/sudoers
+    state: present
+    line: "{{ box_user }} ALL=(ALL) NOPASSWD: ALL"
+    backup: yes
+    validate: 'visudo -cf %s'

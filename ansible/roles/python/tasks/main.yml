@@ -1,0 +1,3 @@
+---
+- include: "install_pyenv.yml"
+  when: python_mode == "install_pyenv"

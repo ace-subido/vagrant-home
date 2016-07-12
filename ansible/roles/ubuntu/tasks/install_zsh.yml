@@ -1,0 +1,75 @@
+---
+- name: zsh packages
+  apt:
+    name: zsh
+    state: present
+  become: True
+
+- name: clone prezto
+  shell: git clone --recursive https://github.com/sorin-ionescu/prezto.git "{{ box_user_home_dir }}/.zprezto"
+  args:
+    creates: "{{ box_user_home_dir }}/.zprezto"
+
+- name: zsh facts
+  shell: 'echo $SHELL'
+  register: default_shell
+  # changed when determines when will this task be considered changed when running
+  # ansible. In this case, we want it to always be false, as we are just
+  # retrieving information.
+  changed_when: False
+  become: False
+
+# Now, we want to set zsh as the default shell, unless it is already the default
+# one.
+- name: make zsh default
+  user:
+    name: "{{ box_user }}"
+    shell: /bin/zsh
+  become: True
+  # shell:  chsh -s /bin/zsh
+  # This task will run only when the following is true. In here, we check the
+  # value registered previously within the "default_shell" variable.
+  # when: default_shell.stdout.find('/bin/zsh') == -1
+
+- name: copy zsh files
+  # shell: /bin/zsh -c 'setopt EXTENDED_GLOB && for rcfile in "${ZDOTDIR:-$HOME}"/.zprezto/runcoms/^README.md(.N); do ln -s "$rcfile" "${ZDOTDIR:-$HOME}/.${rcfile:t}"' done creates={{home_dir}}/.zshrc
+  shell: ln -s {{ box_user_home_dir }}/.zprezto/runcoms/{{ item }} {{ box_user_home_dir }}/.{{ item }}
+  args:
+    creates: "{{ box_user_home_dir }}/.{{ item }}"
+  with_items:
+    - zlogin
+    - zlogout
+    - zpreztorc
+    - zprofile
+    - zshenv
+    - zshrc
+
+- name: copy tmux config
+  copy:
+    src: tmux.conf
+    dest: "{{ box_user_home_dir }}/.tmux.conf"
+
+- name: copy fasd
+  copy:
+    src: files/clvv-fasd-1.0.1-0-g4822024.tar.gz
+    dest: "{{ box_user_home_dir }}/fasd-1.0.1.tar.gz"
+
+- name: extract fasd
+  shell: tar -zxf {{ box_user_home_dir }}/fasd-1.0.1.tar.gz
+  args:
+    creates: "{{ box_user_home_dir }}/clvv-fasd-4822024"
+
+- name: rename fasd home
+  shell: mv {{ box_user_home_dir }}/clvv-fasd-4822024 {{ box_user_home_dir }}/fasd
+  args:
+    creates: "{{ box_user_home_dir }}/fasd"
+
+- name: copy zshrc
+  copy:
+    src: files/zshrc
+    dest: "{{ box_user_home_dir }}/.zshrc"
+
+- name: Create .zsh.after dir
+  shell: mkdir {{ box_user_home_dir }}/.zsh.after
+  args:
+    creates: "{{ box_user_home_dir }}/.zsh.after"

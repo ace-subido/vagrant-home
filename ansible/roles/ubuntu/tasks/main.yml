@@ -1,0 +1,12 @@
+---
+- include: "install_zsh.yml"
+  when: ubuntu_mode == "install_zsh"
+
+- include: "set_locale.yml"
+  when: ubuntu_mode == "set_locale"
+
+- include: "install_basic_tools.yml"
+  when: ubuntu_mode == "install_basic_tools"
+
+- include: "set_sudoers.yml"
+  when: ubuntu_mode == "set_sudoers"

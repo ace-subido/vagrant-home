@@ -1,0 +1,9 @@
+---
+- name: Check if pyenv is installed
+  stat:
+    path: "{{ box_user_home_dir }}/.pyenv"
+  register: check_pyenv_installation
+
+- name: Install pyenv
+  shell: curl -L https://raw.githubusercontent.com/yyuu/pyenv-installer/master/bin/pyenv-installer | bash
+  when: check_pyenv_installation.stat.exists == False

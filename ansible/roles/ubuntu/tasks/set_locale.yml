@@ -1,0 +1,8 @@
+---
+- name: Make sure the system encoding is UTF-8
+  template:
+    src: templates/locale
+    dest: /etc/default/locale
+    owner: vagrant
+    group: root
+    mode: 644

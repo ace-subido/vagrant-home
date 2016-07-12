@@ -1,6 +1,0 @@
-app_user: "vagrant"
-username: "vagrant"
-home_dir: "/home/{{ app_user }}"
-ruby: 2.2.2
-postgresql_password: ""
-
